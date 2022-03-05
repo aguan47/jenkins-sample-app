@@ -5,20 +5,19 @@ pipeline {
 	stages {
 		stage("build the app") {
 			steps {
-				sh 'ls'
 				echo 'building the app'
-				sh 'cd ./app'
-				sh 'ls'
-				sh 'npm install'
+				dir('app') {
+					sh 'npm install'
+				}
 			}
 		}
 		
 		stage("test") {
 			steps {
-				sh 'ls'
 				echo 'testing the app'
-				sh 'cd ./app'
-				sh 'npm test'
+				dir('app') {
+					sh 'npm test'
+				}
 			}
 		}
 
