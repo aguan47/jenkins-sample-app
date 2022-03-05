@@ -6,7 +6,7 @@ pipeline {
 		stage("build the app") {
 			steps {
 				echo 'building the app'
-				sh 'cd app'
+				sh 'cd ./app'
 				sh 'npm install'
 			}
 		}
@@ -14,7 +14,7 @@ pipeline {
 		stage("test") {
 			steps {
 				echo 'testing the app'
-				sh 'cd app'
+				sh 'cd ./app'
 				sh 'npm test'
 			}
 		}
