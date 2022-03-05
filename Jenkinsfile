@@ -13,8 +13,8 @@ pipeline {
 		
 		stage("test") {
 			steps {
-				sh 'pwd'
 				echo 'testing the app'
+				sh 'cd app'
 				sh 'npm run test'
 			}
 		}
@@ -22,7 +22,6 @@ pipeline {
 		stage("build docker image") {
 			steps {
 				echo 'building the docker image'
-				sh 'cd ../'
 				withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
 		sh 'docker build -t alguan47/jenkins:node-app-2.0 .'
 		sh "echo $PASSWORD | docker login -u $USER --password-stdin"
