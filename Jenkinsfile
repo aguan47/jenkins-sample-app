@@ -22,6 +22,11 @@ pipeline {
 		}
 
 		stage("build docker image") {
+			when {
+				expression {
+					BRANCH_NAME == 'master'
+				}
+			}
 			steps {
 				echo 'building the docker image'
 				withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
@@ -34,6 +39,11 @@ pipeline {
 				
 
 		stage("deploy") {
+			when {
+				expression {
+					BRANCH_NAME == 'master'	
+				}
+			}
 			steps {
 				echo 'deploying the app'
 			}
