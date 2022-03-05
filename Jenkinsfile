@@ -15,7 +15,7 @@ pipeline {
 			steps {
 				echo 'testing the app'
 				sh 'cd app'
-				sh 'npm run test'
+				sh 'npm test'
 			}
 		}
 
